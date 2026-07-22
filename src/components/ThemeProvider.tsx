@@ -1,13 +1,20 @@
 import { useEffect } from "react";
 import { useFitnessStore } from "@/store/useFitnessStore";
+import { getThemeById } from "@/data/themes";
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = useFitnessStore((s) => s.getTheme());
+  const themeId = useFitnessStore((s) => s.themeId);
   const whiteBg = useFitnessStore((s) => s.whiteBg);
 
   useEffect(() => {
     const root = document.documentElement;
     const body = document.body;
+    const theme = getThemeById(themeId);
+
+    root.style.setProperty("--theme-accent", theme.accent);
+    root.style.setProperty("--theme-accent-dark", theme.accentDark);
+    root.style.setProperty("--theme-warning", theme.warning);
+    root.style.setProperty("--theme-warning-dark", theme.warningDark);
 
     if (whiteBg) {
       body.setAttribute("data-white-bg", "true");
@@ -28,7 +35,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
       root.style.setProperty("--theme-gradient2-color", theme.gradient2.color);
       root.style.setProperty("--theme-gradient2-opacity", String(theme.gradient2.opacity));
     }
-  }, [theme, whiteBg]);
+  }, [themeId, whiteBg]);
 
   return <>{children}</>;
 }

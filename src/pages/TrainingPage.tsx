@@ -111,7 +111,7 @@ export default function TrainingPage() {
                 value={overallCompletion}
                 size={96}
                 stroke={8}
-                color={overallCompletion >= 100 ? "#C6FF3D" : "#FF6B35"}
+                color={overallCompletion >= 100 ? "var(--theme-accent)" : "var(--theme-warning)"}
               >
                 <div className="text-center">
                   <div className="font-display text-2xl text-ink-50 leading-none">
@@ -150,7 +150,7 @@ export default function TrainingPage() {
                         全部完成
                       </span>
                     ) : overallCompletion > 0 ? (
-                      <span className="chip bg-ember/15 text-ember border border-ember/30">
+                      <span className="chip bg-warning-15 text-warning border border-warning-30">
                         <Clock className="h-3 w-3" />
                         训练中
                       </span>

@@ -175,7 +175,7 @@ export default function CalendarGrid({
                         isDone
                           ? "bg-theme"
                           : isPartial
-                          ? "bg-ember"
+                          ? "bg-warning"
                           : "bg-ink-500"
                       )}
                       style={{ width: `${overallCompletion}%` }}
@@ -222,7 +222,7 @@ export default function CalendarGrid({
           <span>已完成</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-ember" />
+          <span className="h-2 w-2 rounded-full bg-warning" />
           <span>部分完成</span>
         </div>
         <div className="flex items-center gap-1.5">

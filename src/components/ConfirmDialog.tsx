@@ -60,8 +60,8 @@ export default function ConfirmDialog({
             </button>
             <div className="p-6">
               <div className="flex items-start gap-4">
-                <div className="h-10 w-10 rounded-lg bg-ember/15 border border-ember/30 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="h-5 w-5 text-ember" />
+                <div className="h-10 w-10 rounded-lg bg-warning-15 border border-warning-30 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="h-5 w-5 text-warning" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-semibold text-ink-50">{title}</h3>

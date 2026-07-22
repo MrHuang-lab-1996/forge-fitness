@@ -91,7 +91,7 @@ body::before {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink-600 text-ink-100 px-4 py-2.5 transition-all hover:bg-ink-700 hover:border-ink-500 active:scale-[0.98] disabled:opacity-40;
   }
   .btn-danger {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 transition-all hover:bg-ember/10 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 transition-all active:scale-[0.98];
     border-color: color-mix(in srgb, var(--theme-warning) 40%, transparent);
     color: var(--theme-warning);
   }
@@ -144,6 +144,31 @@ body::before {
   }
   .shadow-theme {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-accent) 25%, transparent), 0 8px 30px -8px color-mix(in srgb, var(--theme-accent) 35%, transparent);
+  }
+
+  .text-warning {
+    color: var(--theme-warning);
+  }
+  .bg-warning {
+    background-color: var(--theme-warning);
+  }
+  .bg-warning-15 {
+    background-color: color-mix(in srgb, var(--theme-warning) 15%, transparent);
+  }
+  .bg-warning-10 {
+    background-color: color-mix(in srgb, var(--theme-warning) 10%, transparent);
+  }
+  .border-warning {
+    border-color: var(--theme-warning);
+  }
+  .border-warning-30 {
+    border-color: color-mix(in srgb, var(--theme-warning) 30%, transparent);
+  }
+  .border-warning-40 {
+    border-color: color-mix(in srgb, var(--theme-warning) 40%, transparent);
+  }
+  .border-warning-60 {
+    border-color: color-mix(in srgb, var(--theme-warning) 60%, transparent);
   }
 }
 

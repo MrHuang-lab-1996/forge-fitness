@@ -19,7 +19,7 @@ export default function StatCard({
     accent === "volt"
       ? "text-theme"
       : accent === "ember"
-      ? "text-ember"
+      ? "text-warning"
       : "text-ink-50";
 
   return (

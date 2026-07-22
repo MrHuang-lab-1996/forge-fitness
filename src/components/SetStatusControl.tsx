@@ -26,7 +26,7 @@ const STATUS_OPTIONS: {
     value: "partial",
     label: "部分",
     icon: Minus,
-    activeClass: "bg-ember text-ink-50 border-ember",
+    activeClass: "bg-warning text-ink-50 border-warning",
   },
   {
     value: "skipped",

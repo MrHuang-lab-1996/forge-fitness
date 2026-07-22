@@ -69,7 +69,7 @@ export default function TodayPlanCard({ plan, log, date }: TodayPlanCardProps) {
                 completion >= 100
                   ? "bg-theme"
                   : completion > 0
-                  ? "bg-ember"
+                  ? "bg-warning"
                   : "bg-ink-500"
               )}
               style={{ width: `${completion}%` }}

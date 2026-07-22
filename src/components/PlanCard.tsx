@@ -114,7 +114,7 @@ export default function PlanCard({
           </button>
           <button
             onClick={onDelete}
-            className="h-8 w-8 inline-flex items-center justify-center rounded-lg text-ink-300 hover:bg-ember/10 hover:text-ember transition-colors"
+            className="h-8 w-8 inline-flex items-center justify-center rounded-lg text-ink-300 hover:bg-warning-10 hover:text-warning transition-colors"
             title="删除"
           >
             <Trash2 className="h-4 w-4" />

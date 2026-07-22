@@ -23,7 +23,7 @@ export default function Sidebar() {
             <div className="h-10 w-10 rounded-lg bg-theme flex items-center justify-center shadow-theme">
               <Dumbbell className="h-5 w-5 text-ink-950" strokeWidth={2.5} />
             </div>
-            <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-ember ring-2 ring-ink-900" />
+            <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-warning ring-2 ring-ink-900" />
           </div>
           <div>
             <div className="font-display text-2xl leading-none tracking-wider text-ink-50">
@@ -79,13 +79,13 @@ export default function Sidebar() {
             <Flame
               className={cn(
                 "h-5 w-5 transition-colors",
-                isTraining ? "text-ember" : "text-ink-400 group-hover:text-ink-200"
+                isTraining ? "text-warning" : "text-ink-400 group-hover:text-ink-200"
               )}
               strokeWidth={2}
             />
             <span className="font-medium">训练</span>
             {isTraining && (
-              <span className="ml-auto h-1.5 w-1.5 rounded-full bg-ember" />
+              <span className="ml-auto h-1.5 w-1.5 rounded-full bg-warning" />
             )}
           </NavLink>
         </nav>

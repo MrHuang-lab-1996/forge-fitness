@@ -269,7 +269,7 @@ export default function PlanEditorDrawer({
               {/* 计划名 */}
               <div>
                 <label className="label-base">
-                  计划名称 <span className="text-ember normal-case">*</span>
+                  计划名称 <span className="text-warning normal-case">*</span>
                 </label>
                 <input
                   type="text"
@@ -279,7 +279,7 @@ export default function PlanEditorDrawer({
                     if (submitError) setSubmitError("");
                   }}
                   placeholder="例如：推日 A、腿部轰炸"
-                  className={cn("input-base", submitError && !form.name.trim() && "border-ember/60")}
+                  className={cn("input-base", submitError && !form.name.trim() && "border-warning-60")}
                   maxLength={40}
                   autoFocus
                 />
@@ -393,7 +393,7 @@ export default function PlanEditorDrawer({
                           </button>
                           <button
                             onClick={() => removeExercise(ex.id)}
-                            className="h-7 w-7 inline-flex items-center justify-center rounded text-ink-400 hover:text-ember hover:bg-ember/10 transition-colors flex-shrink-0"
+                            className="h-7 w-7 inline-flex items-center justify-center rounded text-ink-400 hover:text-warning hover:bg-warning-10 transition-colors flex-shrink-0"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                           </button>
@@ -503,7 +503,7 @@ export default function PlanEditorDrawer({
                                   <button
                                     onClick={() => removeSet(ex.id, s.id)}
                                     disabled={ex.sets.length <= 1}
-                                    className="col-span-2 h-7 inline-flex items-center justify-center rounded text-ink-400 hover:text-ember hover:bg-ember/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed justify-self-end"
+                                    className="col-span-2 h-7 inline-flex items-center justify-center rounded text-ink-400 hover:text-warning hover:bg-warning-10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed justify-self-end"
                                   >
                                     <Trash2 className="h-3.5 w-3.5" />
                                   </button>
@@ -550,7 +550,7 @@ export default function PlanEditorDrawer({
             {/* 底部操作 */}
             <div className="flex-shrink-0 px-6 py-4 border-t border-ink-700 flex flex-col gap-2 bg-ink-900">
               {submitError && (
-                <div className="text-xs text-ember font-medium px-1">
+                <div className="text-xs text-warning font-medium px-1">
                   {submitError}
                 </div>
               )}
