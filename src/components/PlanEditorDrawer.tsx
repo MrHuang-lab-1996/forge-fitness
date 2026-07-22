@@ -97,6 +97,7 @@ export default function PlanEditorDrawer({
       setExpandedId(next.exercises[0]?.id || null);
       setShowExercisePicker(null);
       setSearchTerm("");
+      setSubmitError("");
     }
   }, [open, initial]);
 
@@ -198,8 +199,18 @@ export default function PlanEditorDrawer({
     setSearchTerm("");
   }
 
+  const [submitError, setSubmitError] = useState("");
+
   function handleSubmit() {
-    if (!form.name.trim()) return;
+    if (!form.name.trim()) {
+      setSubmitError("请输入计划名称");
+      return;
+    }
+    if (form.exercises.length === 0) {
+      setSubmitError("请至少添加一个动作");
+      return;
+    }
+    setSubmitError("");
     onSubmit({
       ...form,
       name: form.name.trim(),
@@ -256,16 +267,20 @@ export default function PlanEditorDrawer({
             <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
               {/* 计划名 */}
               <div>
-                <label className="label-base">计划名称</label>
+                <label className="label-base">
+                  计划名称 <span className="text-ember normal-case">*</span>
+                </label>
                 <input
                   type="text"
                   value={form.name}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, name: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    setForm((f) => ({ ...f, name: e.target.value }));
+                    if (submitError) setSubmitError("");
+                  }}
                   placeholder="例如：推日 A、腿部轰炸"
-                  className="input-base"
+                  className={cn("input-base", submitError && !form.name.trim() && "border-ember/60")}
                   maxLength={40}
+                  autoFocus
                 />
               </div>
 
@@ -532,21 +547,27 @@ export default function PlanEditorDrawer({
             </div>
 
             {/* 底部操作 */}
-            <div className="px-6 py-4 border-t border-ink-700 flex items-center justify-between gap-3 bg-ink-900">
-              <div className="text-xs text-ink-400">
-                {form.exercises.length} 动作 · {totalSets} 组
-              </div>
-              <div className="flex items-center gap-2">
-                <button onClick={onClose} className="btn-ghost">
-                  取消
-                </button>
-                <button
-                  onClick={handleSubmit}
-                  disabled={!form.name.trim() || form.exercises.length === 0}
-                  className="btn-volt"
-                >
-                  {isEdit ? "保存修改" : "创建计划"}
-                </button>
+            <div className="px-6 py-4 border-t border-ink-700 flex flex-col gap-2 bg-ink-900">
+              {submitError && (
+                <div className="text-xs text-ember font-medium px-1">
+                  {submitError}
+                </div>
+              )}
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-xs text-ink-400">
+                  {form.exercises.length} 动作 · {totalSets} 组
+                </div>
+                <div className="flex items-center gap-2">
+                  <button onClick={onClose} className="btn-ghost">
+                    取消
+                  </button>
+                  <button
+                    onClick={handleSubmit}
+                    className="btn-volt"
+                  >
+                    {isEdit ? "保存修改" : "创建计划"}
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
