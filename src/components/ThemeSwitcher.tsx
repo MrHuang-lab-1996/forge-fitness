@@ -24,10 +24,25 @@ function ThemeDropdown({
   useEffect(() => {
     if (open && anchorRef.current) {
       const rect = anchorRef.current.getBoundingClientRect();
-      setPos({
-        top: rect.bottom + 8,
-        left: rect.left - 160 + rect.width,
-      });
+      const menuWidth = 192; // w-48 = 12rem
+      const menuHeight = 280; // approx
+      const gap = 8;
+      const pad = 8;
+
+      // 水平：优先右对齐按钮，如果超出左边界则左对齐
+      let left = rect.right - menuWidth;
+      if (left < pad) left = pad;
+      if (left + menuWidth > window.innerWidth - pad) {
+        left = window.innerWidth - menuWidth - pad;
+      }
+
+      // 垂直：优先向下展开，如果下方空间不够则向上展开
+      let top = rect.bottom + gap;
+      if (top + menuHeight > window.innerHeight - pad) {
+        top = rect.top - menuHeight - gap;
+      }
+
+      setPos({ top, left });
     }
   }, [open, anchorRef]);
 
@@ -45,7 +60,7 @@ function ThemeDropdown({
           {createPortal(
             <motion.div
               className="fixed z-[101] w-48 rounded-xl bg-ink-900 border border-ink-600 shadow-card overflow-hidden"
-              style={{ top: pos.top, left: Math.max(8, pos.left) }}
+              style={{ top: pos.top, left: pos.left }}
               initial={{ opacity: 0, y: -8, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.95 }}
