@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", "Manrope", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0a0a0b;
+  color: #fafafa;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(198, 255, 61, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(255, 107, 53, 0.05), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* 细微噪点纹理 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a30;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a42;
+}
+
+/* 通用工具类 */
+@layer components {
+  .surface {
+    @apply bg-ink-800/80 border border-ink-600 backdrop-blur-sm;
+  }
+  .surface-hover {
+    @apply hover:bg-ink-750 hover:border-ink-500 transition-colors;
+  }
+  .btn-volt {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-volt text-ink-950 font-semibold px-4 py-2.5 transition-all hover:bg-volt-dark hover:shadow-volt active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink-600 text-ink-100 px-4 py-2.5 transition-all hover:bg-ink-700 hover:border-ink-500 active:scale-[0.98] disabled:opacity-40;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ember/40 text-ember px-4 py-2.5 transition-all hover:bg-ember/10 active:scale-[0.98];
+  }
+  .input-base {
+    @apply w-full rounded-lg bg-ink-900 border border-ink-600 px-3 py-2.5 text-ink-50 placeholder:text-ink-400 focus:outline-none focus:border-volt/60 focus:ring-1 focus:ring-volt/30 transition-colors;
+  }
+  .label-base {
+    @apply block text-xs font-semibold uppercase tracking-wider text-ink-300 mb-2;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+}
+
+/* 数字滚动动效 */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.count-up {
+  animation: countUp 0.4s ease-out;
+}
+
+/* 完成度环过渡 */
+.progress-ring circle {
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
