@@ -75,7 +75,7 @@ export default function TrainingPage() {
     <div>
       <button
         onClick={() => navigate("/calendar")}
-        className="inline-flex items-center gap-1.5 text-sm text-ink-300 hover:text-volt transition-colors mb-4"
+        className="inline-flex items-center gap-1.5 text-sm text-ink-300 hover:text-theme transition-colors mb-4"
       >
         <ArrowLeft className="h-4 w-4" />
         返回日历
@@ -134,7 +134,7 @@ export default function TrainingPage() {
                   <div className="text-[10px] font-semibold uppercase tracking-wider text-ink-400">
                     完成组数
                   </div>
-                  <div className="font-display text-3xl text-volt mt-1">
+                  <div className="font-display text-3xl text-theme mt-1">
                     {doneSets}
                     <span className="text-base text-ink-400">/{totalSets}</span>
                   </div>
@@ -145,7 +145,7 @@ export default function TrainingPage() {
                   </div>
                   <div className="mt-1.5">
                     {overallCompletion >= 100 ? (
-                      <span className="chip bg-volt/15 text-volt border border-volt/30">
+                      <span className="chip bg-theme/15 text-theme border border-theme/30">
                         <Flame className="h-3 w-3" />
                         全部完成
                       </span>

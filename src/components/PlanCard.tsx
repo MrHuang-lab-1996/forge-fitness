@@ -93,7 +93,7 @@ export default function PlanCard({
         <div className="flex items-center gap-1 pt-3 border-t border-ink-700/60">
           <Link
             to={`/train/${plan.scheduledDate}`}
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-volt hover:bg-volt/10 transition-colors"
+            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold text-theme hover:bg-theme/10 transition-colors"
           >
             开始训练
             <ChevronRight className="h-3.5 w-3.5" />

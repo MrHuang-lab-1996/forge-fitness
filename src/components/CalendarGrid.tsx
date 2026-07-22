@@ -63,7 +63,7 @@ export default function CalendarGrid({
       {/* 月份切换 */}
       <div className="flex items-center justify-between mb-5">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-volt">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-theme">
             {format(cursor, "yyyy", { locale: zhCN })}
           </div>
           <div className="font-display text-3xl tracking-wider text-ink-50 mt-1">
@@ -143,7 +143,7 @@ export default function CalendarGrid({
               className={cn(
                 "relative aspect-square rounded-lg border p-1.5 sm:p-2 flex flex-col items-start transition-all text-left",
                 isSelected
-                  ? "border-volt bg-volt/10 shadow-volt"
+                  ? "border-theme bg-theme/10 shadow-theme"
                   : isTodayFlag
                   ? "border-ink-500 bg-ink-800"
                   : "border-ink-700/60 hover:border-ink-500 hover:bg-ink-800/60",
@@ -154,14 +154,14 @@ export default function CalendarGrid({
                 <span
                   className={cn(
                     "text-xs sm:text-sm font-semibold",
-                    isTodayFlag ? "text-volt" : "text-ink-200",
+                    isTodayFlag ? "text-theme" : "text-ink-200",
                     !inMonth && "text-ink-500"
                   )}
                 >
                   {format(day, "d")}
                 </span>
                 {isTodayFlag && (
-                  <span className="h-1 w-1 rounded-full bg-volt" />
+                  <span className="h-1 w-1 rounded-full bg-theme" />
                 )}
               </div>
 
@@ -173,7 +173,7 @@ export default function CalendarGrid({
                       className={cn(
                         "h-full rounded-full transition-all duration-500",
                         isDone
-                          ? "bg-volt"
+                          ? "bg-theme"
                           : isPartial
                           ? "bg-ember"
                           : "bg-ink-500"
@@ -205,7 +205,7 @@ export default function CalendarGrid({
 
               {/* 状态标识 */}
               {isDone && (
-                <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-volt shadow-volt" />
+                <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-theme shadow-theme" />
               )}
               {isPending && (
                 <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-ink-500" />
@@ -218,7 +218,7 @@ export default function CalendarGrid({
       {/* 图例 */}
       <div className="flex items-center gap-4 mt-5 pt-4 border-t border-ink-700/60 text-[11px] text-ink-400">
         <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-volt" />
+          <span className="h-2 w-2 rounded-full bg-theme" />
           <span>已完成</span>
         </div>
         <div className="flex items-center gap-1.5">

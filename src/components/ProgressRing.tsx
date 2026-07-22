@@ -14,7 +14,7 @@ export default function ProgressRing({
   value,
   size = 48,
   stroke = 4,
-  color = "#C6FF3D",
+  color = "var(--theme-accent)",
   trackColor = "rgba(255,255,255,0.08)",
   className,
   children,

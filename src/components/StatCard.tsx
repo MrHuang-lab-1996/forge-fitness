@@ -17,7 +17,7 @@ export default function StatCard({
 }: StatCardProps) {
   const accentColor =
     accent === "volt"
-      ? "text-volt"
+      ? "text-theme"
       : accent === "ember"
       ? "text-ember"
       : "text-ink-50";
@@ -44,7 +44,7 @@ export default function StatCard({
         {unit && <span className="text-xs text-ink-400">{unit}</span>}
       </div>
       {accent === "volt" && (
-        <div className="absolute -right-2 -bottom-2 h-12 w-12 rounded-full bg-volt/5 blur-xl" />
+        <div className="absolute -right-2 -bottom-2 h-12 w-12 rounded-full bg-theme/5 blur-xl" />
       )}
     </div>
   );

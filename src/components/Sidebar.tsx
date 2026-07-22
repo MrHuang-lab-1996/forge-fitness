@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { CalendarDays, ListTodo, Dumbbell, Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const NAV_ITEMS = [
   { to: "/calendar", label: "日历", icon: CalendarDays, abbr: "CAL" },
@@ -18,7 +19,7 @@ export default function Sidebar() {
       <aside className="hidden md:flex md:flex-col md:w-60 md:fixed md:inset-y-0 md:left-0 md:border-r md:border-ink-700/60 md:bg-ink-900/40 md:backdrop-blur-xl md:z-20">
         <div className="flex items-center gap-3 px-6 h-20 border-b border-ink-700/60">
           <div className="relative">
-            <div className="h-10 w-10 rounded-lg bg-volt flex items-center justify-center shadow-volt">
+            <div className="h-10 w-10 rounded-lg bg-theme flex items-center justify-center shadow-theme">
               <Dumbbell className="h-5 w-5 text-ink-950" strokeWidth={2.5} />
             </div>
             <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-ember ring-2 ring-ink-900" />
@@ -52,13 +53,13 @@ export default function Sidebar() {
                   <item.icon
                     className={cn(
                       "h-5 w-5 transition-colors",
-                      isActive ? "text-volt" : "text-ink-400 group-hover:text-ink-200"
+                      isActive ? "text-theme" : "text-ink-400 group-hover:text-ink-200"
                     )}
                     strokeWidth={2}
                   />
                   <span className="font-medium">{item.label}</span>
                   {isActive && (
-                    <span className="ml-auto h-1.5 w-1.5 rounded-full bg-volt" />
+                    <span className="ml-auto h-1.5 w-1.5 rounded-full bg-theme" />
                   )}
                 </>
               )}
@@ -89,6 +90,9 @@ export default function Sidebar() {
         </nav>
 
         <div className="px-6 py-5 border-t border-ink-700/60">
+          <div className="mb-4">
+            <ThemeSwitcher />
+          </div>
           <div className="text-[10px] uppercase tracking-[0.2em] text-ink-400 mb-1">
             本地存储
           </div>
@@ -99,7 +103,7 @@ export default function Sidebar() {
       </aside>
 
       {/* 移动端底部 Tab */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-ink-900/95 backdrop-blur-xl border-t border-ink-700/60 px-2 py-2 flex justify-around">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-ink-900/95 backdrop-blur-xl border-t border-ink-700/60 px-2 py-2 flex justify-around items-center">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.to}
@@ -107,7 +111,7 @@ export default function Sidebar() {
             className={({ isActive }) =>
               cn(
                 "flex flex-col items-center gap-1 px-4 py-1.5 rounded-lg transition-colors",
-                isActive ? "text-volt" : "text-ink-400"
+                isActive ? "text-theme" : "text-ink-400"
               )
             }
           >
@@ -117,6 +121,7 @@ export default function Sidebar() {
             </span>
           </NavLink>
         ))}
+        <ThemeSwitcher />
       </nav>
     </>
   );

@@ -24,7 +24,7 @@ export default function PageHeader({
     >
       <div>
         {eyebrow && (
-          <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-volt mb-2">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-theme mb-2">
             {eyebrow}
           </div>
         )}

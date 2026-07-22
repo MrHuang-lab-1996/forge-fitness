@@ -67,7 +67,7 @@ export default function TodayPlanCard({ plan, log, date }: TodayPlanCardProps) {
               className={cn(
                 "h-full rounded-full transition-all duration-500",
                 completion >= 100
-                  ? "bg-volt"
+                  ? "bg-theme"
                   : completion > 0
                   ? "bg-ember"
                   : "bg-ink-500"
@@ -83,7 +83,7 @@ export default function TodayPlanCard({ plan, log, date }: TodayPlanCardProps) {
               {completion}
             </span>
           </ProgressRing>
-          <ChevronRight className="h-5 w-5 text-ink-400 group-hover:text-volt group-hover:translate-x-0.5 transition-all" />
+          <ChevronRight className="h-5 w-5 text-ink-400 group-hover:text-theme group-hover:translate-x-0.5 transition-all" />
         </div>
       </div>
     </Link>

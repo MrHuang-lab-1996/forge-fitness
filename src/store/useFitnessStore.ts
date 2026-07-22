@@ -9,6 +9,7 @@ import type {
   SetStatus,
 } from "@/types";
 import { getExercise } from "@/data/exercises";
+import { getThemeById } from "@/data/themes";
 
 let idCounter = 0;
 function uid(prefix = "id"): string {
@@ -21,6 +22,11 @@ function uid(prefix = "id"): string {
 interface FitnessState {
   plans: Plan[];
   logs: TrainingLog[];
+  themeId: string;
+
+  // 主题相关
+  setTheme: (themeId: string) => void;
+  getTheme: () => ReturnType<typeof getThemeById>;
 
   // 计划相关
   addPlan: (plan: {
@@ -57,6 +63,15 @@ export const useFitnessStore = create<FitnessState>()(
     (set, get) => ({
       plans: [],
       logs: [],
+      themeId: "volt",
+
+      setTheme: (themeId) => {
+        set({ themeId });
+      },
+
+      getTheme: () => {
+        return getThemeById(get().themeId);
+      },
 
       addPlan: (input) => {
         const id = uid("plan");

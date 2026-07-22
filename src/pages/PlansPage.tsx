@@ -132,7 +132,7 @@ export default function PlansPage() {
             className={cn(
               "chip flex-shrink-0 transition-colors",
               filterMuscle === "all"
-                ? "bg-volt text-ink-950"
+                ? "bg-theme text-ink-950"
                 : "bg-ink-800 text-ink-300 hover:bg-ink-700"
             )}
           >

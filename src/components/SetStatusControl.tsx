@@ -20,7 +20,7 @@ const STATUS_OPTIONS: {
     value: "completed",
     label: "完成",
     icon: Check,
-    activeClass: "bg-volt text-ink-950 border-volt",
+    activeClass: "bg-theme text-ink-950 border-theme",
   },
   {
     value: "partial",
@@ -80,7 +80,7 @@ export default function SetStatusControl({
                 Math.max(0, parseInt(e.target.value) || 0)
               )
             }
-            className="w-full rounded-md bg-ink-900 border border-ink-600 px-2 py-1 text-sm text-ink-50 focus:outline-none focus:border-volt/60"
+            className="w-full rounded-md bg-ink-900 border border-ink-600 px-2 py-1 text-sm text-ink-50 focus:outline-none focus:border-theme/60"
             placeholder="实际次数"
           />
         )}

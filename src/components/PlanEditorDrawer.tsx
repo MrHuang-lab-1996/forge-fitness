@@ -249,7 +249,7 @@ export default function PlanEditorDrawer({
             {/* 顶部 */}
             <div className="flex-shrink-0 flex items-center justify-between px-6 py-5 border-b border-ink-700">
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-volt">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-theme">
                   {isEdit ? "EDIT PLAN" : "NEW PLAN"}
                 </div>
                 <h2 className="font-display text-2xl tracking-wider text-ink-50 mt-1">
@@ -351,7 +351,7 @@ export default function PlanEditorDrawer({
                   </label>
                   <button
                     onClick={addExercise}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-volt hover:text-volt-dark transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-theme hover:text-theme-dark transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     添加动作
@@ -407,7 +407,7 @@ export default function PlanEditorDrawer({
                                 onClick={() =>
                                   setShowExercisePicker(isPicking ? null : ex.id)
                                 }
-                                className="w-full text-left text-xs font-semibold text-volt hover:text-volt-dark"
+                                className="w-full text-left text-xs font-semibold text-theme hover:text-theme-dark"
                               >
                                 {isPicking ? "收起动作列表" : "更换动作 →"}
                               </button>
@@ -424,7 +424,7 @@ export default function PlanEditorDrawer({
                                       setSearchTerm(e.target.value)
                                     }
                                     placeholder="搜索动作..."
-                                    className="w-full pl-8 pr-3 py-2 text-xs rounded-md bg-ink-900 border border-ink-600 text-ink-50 placeholder:text-ink-400 focus:outline-none focus:border-volt/60"
+                                    className="w-full pl-8 pr-3 py-2 text-xs rounded-md bg-ink-900 border border-ink-600 text-ink-50 placeholder:text-ink-400 focus:outline-none focus:border-theme/60"
                                   />
                                 </div>
                                 <div className="grid grid-cols-1 gap-1 max-h-40 overflow-y-auto">
@@ -437,7 +437,7 @@ export default function PlanEditorDrawer({
                                       className={cn(
                                         "text-left px-3 py-2 rounded text-xs transition-colors",
                                         ex.exerciseId === e.id
-                                          ? "bg-volt/15 text-volt"
+                                          ? "bg-theme/15 text-theme"
                                           : "text-ink-200 hover:bg-ink-700"
                                       )}
                                     >
@@ -482,7 +482,7 @@ export default function PlanEditorDrawer({
                                         ),
                                       })
                                     }
-                                    className="col-span-4 rounded-md bg-ink-900 border border-ink-600 px-2 py-1.5 text-sm text-ink-50 focus:outline-none focus:border-volt/60"
+                                    className="col-span-4 rounded-md bg-ink-900 border border-ink-600 px-2 py-1.5 text-sm text-ink-50 focus:outline-none focus:border-theme/60"
                                   />
                                   <input
                                     type="number"
@@ -498,7 +498,7 @@ export default function PlanEditorDrawer({
                                         ),
                                       })
                                     }
-                                    className="col-span-4 rounded-md bg-ink-900 border border-ink-600 px-2 py-1.5 text-sm text-ink-50 focus:outline-none focus:border-volt/60"
+                                    className="col-span-4 rounded-md bg-ink-900 border border-ink-600 px-2 py-1.5 text-sm text-ink-50 focus:outline-none focus:border-theme/60"
                                   />
                                   <button
                                     onClick={() => removeSet(ex.id, s.id)}
@@ -511,7 +511,7 @@ export default function PlanEditorDrawer({
                               ))}
                               <button
                                 onClick={() => addSet(ex.id)}
-                                className="w-full mt-1 py-1.5 rounded-md border border-dashed border-ink-600 text-xs text-ink-300 hover:border-volt/50 hover:text-volt transition-colors inline-flex items-center justify-center gap-1"
+                                className="w-full mt-1 py-1.5 rounded-md border border-dashed border-ink-600 text-xs text-ink-300 hover:border-theme/50 hover:text-theme transition-colors inline-flex items-center justify-center gap-1"
                               >
                                 <Plus className="h-3 w-3" />
                                 添加一组
