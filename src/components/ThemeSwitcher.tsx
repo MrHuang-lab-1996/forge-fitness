@@ -1,49 +1,51 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette, ChevronDown, Check } from "lucide-react";
 import { useFitnessStore } from "@/store/useFitnessStore";
 import { THEMES } from "@/data/themes";
 import { cn } from "@/lib/utils";
 
-export default function ThemeSwitcher() {
-  const themeId = useFitnessStore((s) => s.themeId);
-  const setTheme = useFitnessStore((s) => s.setTheme);
-  const [open, setOpen] = useState(false);
+function ThemeDropdown({
+  open,
+  themeId,
+  anchorRef,
+  onSelect,
+  onClose,
+}: {
+  open: boolean;
+  themeId: string;
+  anchorRef: React.RefObject<HTMLButtonElement | null>;
+  onSelect: (id: string) => void;
+  onClose: () => void;
+}) {
+  const [pos, setPos] = useState({ top: 0, left: 0 });
 
-  const currentTheme = THEMES.find((t) => t.id === themeId) || THEMES[0];
-
-  function handleSelect(id: string) {
-    setTheme(id);
-    setOpen(false);
-  }
+  useEffect(() => {
+    if (open && anchorRef.current) {
+      const rect = anchorRef.current.getBoundingClientRect();
+      setPos({
+        top: rect.bottom + 8,
+        left: rect.left - 160 + rect.width,
+      });
+    }
+  }, [open, anchorRef]);
 
   return (
-    <div className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-ink-600 text-ink-300 hover:bg-ink-800 hover:text-ink-100 transition-all"
-      >
-        <div
-          className="h-4 w-4 rounded-full"
-          style={{ backgroundColor: currentTheme.accent }}
-        />
-        <span className="text-xs font-semibold tracking-wider">
-          {currentTheme.name}
-        </span>
-        <ChevronDown
-          className={cn("h-4 w-4 text-ink-400 transition-transform", open && "rotate-180")}
-        />
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <>
+    <AnimatePresence>
+      {open && (
+        <>
+          {createPortal(
             <div
-              className="fixed inset-0 z-50"
-              onClick={() => setOpen(false)}
-            />
+              className="fixed inset-0 z-[100]"
+              onClick={onClose}
+            />,
+            document.body
+          )}
+          {createPortal(
             <motion.div
-              className="absolute top-full right-0 mt-2 w-48 rounded-xl bg-ink-900 border border-ink-600 shadow-card overflow-hidden z-50"
+              className="fixed z-[101] w-48 rounded-xl bg-ink-900 border border-ink-600 shadow-card overflow-hidden"
+              style={{ top: pos.top, left: Math.max(8, pos.left) }}
               initial={{ opacity: 0, y: -8, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.95 }}
@@ -59,7 +61,7 @@ export default function ThemeSwitcher() {
                 {THEMES.map((theme) => (
                   <button
                     key={theme.id}
-                    onClick={() => handleSelect(theme.id)}
+                    onClick={() => onSelect(theme.id)}
                     className={cn(
                       "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all",
                       themeId === theme.id
@@ -78,7 +80,12 @@ export default function ThemeSwitcher() {
                       />
                     </div>
                     <div className="flex-1 text-left">
-                      <div className={cn("text-sm font-medium", themeId === theme.id ? "text-ink-50" : "text-ink-200")}>
+                      <div
+                        className={cn(
+                          "text-sm font-medium",
+                          themeId === theme.id ? "text-ink-50" : "text-ink-200"
+                        )}
+                      >
                         {theme.name}
                       </div>
                       <div className="text-[10px] font-semibold uppercase tracking-wider text-ink-400">
@@ -86,15 +93,65 @@ export default function ThemeSwitcher() {
                       </div>
                     </div>
                     {themeId === theme.id && (
-                      <Check className="h-4 w-4" style={{ color: theme.accent }} />
+                      <Check
+                        className="h-4 w-4"
+                        style={{ color: theme.accent }}
+                      />
                     )}
                   </button>
                 ))}
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </motion.div>,
+            document.body
+          )}
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
+export default function ThemeSwitcher() {
+  const themeId = useFitnessStore((s) => s.themeId);
+  const setTheme = useFitnessStore((s) => s.setTheme);
+  const [open, setOpen] = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  const currentTheme = THEMES.find((t) => t.id === themeId) || THEMES[0];
+
+  function handleSelect(id: string) {
+    setTheme(id);
+    setOpen(false);
+  }
+
+  return (
+    <div className="relative">
+      <button
+        ref={btnRef}
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-ink-600 text-ink-300 hover:bg-ink-800 hover:text-ink-100 transition-all"
+      >
+        <div
+          className="h-4 w-4 rounded-full"
+          style={{ backgroundColor: currentTheme.accent }}
+        />
+        <span className="text-xs font-semibold tracking-wider">
+          {currentTheme.name}
+        </span>
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 text-ink-400 transition-transform",
+            open && "rotate-180"
+          )}
+        />
+      </button>
+
+      <ThemeDropdown
+        open={open}
+        themeId={themeId}
+        anchorRef={btnRef}
+        onSelect={handleSelect}
+        onClose={() => setOpen(false)}
+      />
     </div>
   );
 }
