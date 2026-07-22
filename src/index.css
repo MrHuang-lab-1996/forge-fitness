@@ -166,3 +166,110 @@ body::before {
 .progress-ring circle {
   transition: stroke-dashoffset 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* 浅色背景模式 */
+body[data-white-bg="true"] {
+  color: #1a1a2e;
+}
+
+body[data-white-bg="true"] ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+body[data-white-bg="true"] ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+body[data-white-bg="true"] .surface {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: #e5e7eb;
+}
+
+body[data-white-bg="true"] .surface-hover:hover {
+  background-color: rgba(243, 244, 246, 0.9);
+  border-color: #d1d5db;
+}
+
+body[data-white-bg="true"] .btn-ghost {
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+body[data-white-bg="true"] .btn-ghost:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+body[data-white-bg="true"] .input-base {
+  background-color: #ffffff;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+body[data-white-bg="true"] .input-base::placeholder {
+  color: #9ca3af;
+}
+
+body[data-white-bg="true"] .label-base {
+  color: #6b7280;
+}
+
+body[data-white-bg="true"] .text-ink-50 {
+  color: #111827;
+}
+
+body[data-white-bg="true"] .text-ink-100 {
+  color: #1f2937;
+}
+
+body[data-white-bg="true"] .text-ink-200 {
+  color: #374151;
+}
+
+body[data-white-bg="true"] .text-ink-300 {
+  color: #6b7280;
+}
+
+body[data-white-bg="true"] .text-ink-400 {
+  color: #9ca3af;
+}
+
+body[data-white-bg="true"] .bg-ink-900 {
+  background-color: #ffffff;
+}
+
+body[data-white-bg="true"] .bg-ink-800 {
+  background-color: #f9fafb;
+}
+
+body[data-white-bg="true"] .bg-ink-700 {
+  background-color: #f3f4f6;
+}
+
+body[data-white-bg="true"] .border-ink-700 {
+  border-color: #e5e7eb;
+}
+
+body[data-white-bg="true"] .border-ink-600 {
+  border-color: #d1d5db;
+}
+
+body[data-white-bg="true"] .border-ink-500 {
+  border-color: #9ca3af;
+}
+
+body[data-white-bg="true"] .bg-ink-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+body[data-white-bg="true"] .bg-ink-900\/40 {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+body[data-white-bg="true"] .bg-ink-800\/50 {
+  background-color: rgba(249, 250, 251, 0.5);
+}
+
+body[data-white-bg="true"] .border-ink-700\/60 {
+  border-color: rgba(229, 231, 235, 0.6);
+}
