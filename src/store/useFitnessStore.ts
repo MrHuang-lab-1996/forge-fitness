@@ -23,10 +23,12 @@ interface FitnessState {
   plans: Plan[];
   logs: TrainingLog[];
   themeId: string;
+  whiteBg: boolean;
 
   // 主题相关
   setTheme: (themeId: string) => void;
   getTheme: () => ReturnType<typeof getThemeById>;
+  toggleWhiteBg: () => void;
 
   // 计划相关
   addPlan: (plan: {
@@ -64,6 +66,7 @@ export const useFitnessStore = create<FitnessState>()(
       plans: [],
       logs: [],
       themeId: "volt",
+      whiteBg: false,
 
       setTheme: (themeId) => {
         set({ themeId });
@@ -71,6 +74,10 @@ export const useFitnessStore = create<FitnessState>()(
 
       getTheme: () => {
         return getThemeById(get().themeId);
+      },
+
+      toggleWhiteBg: () => {
+        set((s) => ({ whiteBg: !s.whiteBg }));
       },
 
       addPlan: (input) => {

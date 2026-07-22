@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { CalendarDays, ListTodo, Dumbbell, Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import WhiteBgToggle from "@/components/WhiteBgToggle";
 
 const NAV_ITEMS = [
   { to: "/calendar", label: "日历", icon: CalendarDays, abbr: "CAL" },
@@ -90,8 +91,9 @@ export default function Sidebar() {
         </nav>
 
         <div className="px-6 py-5 border-t border-ink-700/60">
-          <div className="mb-4">
+          <div className="flex items-center gap-2 mb-4">
             <ThemeSwitcher />
+            <WhiteBgToggle />
           </div>
           <div className="text-[10px] uppercase tracking-[0.2em] text-ink-400 mb-1">
             本地存储
@@ -122,6 +124,7 @@ export default function Sidebar() {
           </NavLink>
         ))}
         <ThemeSwitcher />
+        <WhiteBgToggle />
       </nav>
     </>
   );
