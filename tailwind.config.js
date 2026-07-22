@@ -25,12 +25,12 @@ export default {
           50: "#FAFAFA",
         },
         volt: {
-          DEFAULT: "#C6FF3D",
-          dark: "#9FCC2A",
+          DEFAULT: "var(--theme-accent)",
+          dark: "var(--theme-accent-dark)",
         },
         ember: {
-          DEFAULT: "#FF6B35",
-          dark: "#CC5529",
+          DEFAULT: "var(--theme-warning)",
+          dark: "var(--theme-warning-dark)",
         },
       },
       fontFamily: {
@@ -42,7 +42,7 @@ export default {
         "2xl": "16px",
       },
       boxShadow: {
-        volt: "0 0 0 1px rgba(198,255,61,0.25), 0 8px 30px -8px rgba(198,255,61,0.35)",
+        volt: "0 0 0 1px color-mix(in srgb, var(--theme-accent) 25%, transparent), 0 8px 30px -8px color-mix(in srgb, var(--theme-accent) 35%, transparent)",
         card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 24px -12px rgba(0,0,0,0.6)",
       },
     },

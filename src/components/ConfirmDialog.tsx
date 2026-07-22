@@ -51,7 +51,7 @@ export default function ConfirmDialog({
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: "spring", duration: 0.3 }}
           >
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/60 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_srgb,var(--theme-warning)_60%,transparent)] to-transparent" />
             <button
               onClick={onCancel}
               className="absolute top-4 right-4 text-ink-400 hover:text-ink-100 transition-colors"

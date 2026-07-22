@@ -228,7 +228,7 @@ export const useFitnessStore = create<FitnessState>()(
     }),
     {
       name: "fitness-app-storage",
-      version: 1,
+      version: 2,
     }
   )
 );

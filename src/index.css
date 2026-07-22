@@ -170,6 +170,9 @@ body::before {
   .border-warning-60 {
     border-color: color-mix(in srgb, var(--theme-warning) 60%, transparent);
   }
+  .warning-60 {
+    color: color-mix(in srgb, var(--theme-warning) 60%, transparent);
+  }
 }
 
 /* 数字滚动动效 */
